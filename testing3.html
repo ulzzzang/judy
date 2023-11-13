@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TESTING!!!</title>
+        <style>
+            body{
+                background: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        
+            .s-img{
+                width:20vw;
+                height:auto;
+                object-fit: cover;
+                cursor: pointer;
+                transition: width 250ms ease, height 250ms ease;
+                border-radius: 5px;
+            }
+                
+            .s-img:hover{
+                width:19vw;
+                height:auto;    
+            }
+            
+            .s-img2{
+                width:20vw;
+                height:auto;
+                object-fit: cover;
+                cursor: pointer;
+                transition: width 250ms ease, height 250ms ease;
+                border-radius: 5px;
+            }
+                
+            .s-img2:hover{
+                width:19vw;
+                height:auto;    
+            }
+            
+            
+        </style>
+    </head>
+    <body>
+        <img src="assets/images/archive/moshpit.png" id="img-to-drag" class="s-img" alt="">
+        <img src="assets/images/archive/alterego.png" id="img-to-drag2" class="s-img2" alt="">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/3.0.0/draggabilly.pkgd.min.js" integrity="sha512-hbEWVzVt2yK7kQmJ1NZirxxO0NPtE4W09fT4f9Emem/n0rMPFHlLbuLcUcLNrtUGWGoQ8qGvKDVJnRRuCzjeZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        let el = document.getElementById('img-to-drag');
+        let draggie = new Draggabilly(el);
+    </script>
+        
+    <script>
+        let el2 = document.getElementById('img-to-drag2');
+        let draggie2 = new Draggabilly(el);
+    </script>
+        
+    </body>
+</html>
+    
+    

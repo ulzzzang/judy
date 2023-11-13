@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <title>playground</title>
+    <style>
+        
+            body {
+    background-color: white;
+  }
+
+  h1 {
+    color: black;
+    text-align: center;
+  }
+      
+    @font-face {
+      font-family: 'Hubot Sans';
+      src:
+        url('fonts/Hubot-Sans.woff2') format('woff2 supports variations'),
+        url('fonts/Hubot-Sans.woff2') format('woff2-variations');
+      font-weight: 200 900;
+      font-stretch: 75% 125%;
+    }
+
+    html,
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-family: 'Hubot Sans';
+    }
+
+    a,
+    a:visited {
+      text-decoration: none;
+      color: white;
+    }
+
+    body {
+      background-color: white;
+      width: 100vw;
+    }
+
+    @media (max-width:760px) {
+      img.res {
+        max-width: 80vw;
+      }
+    }
+
+    @media (min-width:761px) {
+      img.res {
+        max-width: 60vw;
+        max-height: 60vw;
+      }
+    }
+
+    p {
+      text-align: center
+    }
+
+    h1 {
+      color: black;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: white;
+      text-align: center;
+    }
+
+    main {
+      min-height: 100vh;
+      background: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      position: sticky;
+      bottom: 0;
+      left: 0px;
+      right: 0px;
+      width: 100%;
+      background: black;
+      display: grid;
+      z-index: -1;
+    }
+
+    .container {
+      width: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+    }
+
+    #toggle {
+      -webkit-appearance: none;
+    }
+
+    .button {
+      position: absolute;
+      z-index: 999;
+      width: 43px;
+      height: 43px;
+      background: black;
+      border-radius: 100%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: -12px;
+    }
+
+    .button:before {
+      position: absolute;
+      content: "";
+      width: 20px;
+      height: 2px;
+      background: white;
+      transform: rotate(90deg);
+      transition: all 0.4s ease;
+    }
+
+    .button:after {
+      position: absolute;
+      content: "";
+      width: 20px;
+      height: 2px;
+      background: white;
+      transition: all 0.4s ease;
+    }
+
+    .nav {
+      opacity: 0;
+      transition: all 0.4s ease-in-out;
+      background: white;
+      width: 100%;
+      border-radius: 5px;
+      transform: translateY(0%);
+      padding: 10px;
+    }
+
+    .nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav a {
+      text-align: center;
+      margin: 20px 0;
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.5em;
+    }
+
+    .nav a:hover {
+      color: gray;
+    }
+
+    #toggle:checked~.nav {
+      opacity: 1;
+      transform: translateY(10%);
+    }
+
+    #toggle:checked~.button:before {
+      transform: rotate(225deg);
+    }
+
+    #toggle:checked~.button:after {
+      transform: rotate(135deg);
+    }
+
+    .menuContainer {
+      margin-top: 5vh;
+      width: unset;
+      margin-left: 30px;
+      padding: 0;
+    }
+
+    .navMenu {
+      width: unset;
+      padding: 0;
+      background-color: rgba(0,0,0,0);
+    }
+
+    .mobileview12pro {
+      width: 0px;}
+        .draggable {
+            position: absolute;
+            cursor: move;
+            width: 10vw;
+            height: auto;
+        }
+
+        .draggable::selection {
+            background-color: transparent;
+        }
+        
+        body {
+  background-image: url(assets/images/2/snake%20better.png);
+  background-repeat: no-repeat;
+background-position: center;
+  background-attachment: fixed;
+  background-size: 30vw auto;
+}
+
+              .footer {
+  padding: 40px 0 0 0;
+  background-color: #ffffff;
+}
+.footer ul {
+  margin-top: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.footer ul a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.footer ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+.footer ul a:hover {
+  opacity: 1;
+}
+.footer .copyright {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 8px;
+  color: #aaa;
+    display: inline-block;
+  padding: 0 15px;
+}
+    </style>
+</head>
+<body>
+    <div class="container menuContainer">
+        <input type="checkbox" class="mobileview12pro" id="toggle" unchecked />
+        <label class="button" for="toggle"></label>
+        <nav class="nav navMenu" style="font-weight: 900; font-stretch: 125%;">
+          <ul>
+            <a href="1.html" target="_blank">1</a>
+            <a href="2.html" target="_blank">2</a>
+            <a href="3.html" target="_blank">3</a>
+            <a href="4.html" target="_blank">4</a>
+            <a href="5.html" target="_blank">5</a>
+            <a href="playground.html" target="_blank">?</a>
+            <!--target blank opens links in new tab-->
+          </ul>
+        </nav>
+      </div>
+    
+    <div id="image-container" style="position: relative; width: 100%; height: 100vh;left: 75px;"></div>
+
+    <script>
+        function getRandomPosition(container) {
+            const maxX = container.clientWidth - 100;
+            const maxY = container.clientHeight - 100;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            return { x, y };
+        }
+
+        function makeDraggable(element) {
+            let offsetX, offsetY, isDragging = false;
+
+            const container = document.getElementById('image-container');
+            const randomPosition = getRandomPosition(container);
+            element.style.left = randomPosition.x + 'px';
+            element.style.top = randomPosition.y + 'px';
+
+            element.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                const touch = e.touches[0];
+                offsetX = touch.clientX - element.getBoundingClientRect().left;
+                offsetY = touch.clientY - element.getBoundingClientRect().top;
+                e.preventDefault();
+            });
+
+            element.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+
+                const touch = e.touches[0];
+                const x = touch.clientX - offsetX;
+                const y = touch.clientY - offsetY;
+
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+                e.preventDefault();
+            });
+
+            element.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            element.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - element.getBoundingClientRect().left;
+                offsetY = e.clientY - element.getBoundingClientRect().top;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+
+                const x = e.clientX - offsetX;
+                const y = e.clientY - offsetY;
+
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        }
+
+        
+        const imageContainer = document.getElementById('image-container');
+
+        
+        const images = ['assets/images/archive/moshpit%20big.png', 'assets/images/archive/alterego.png', 'assets/images/archive/puppet%20show.png', 'assets/images/archive/skullclear.png', 'assets/images/archive/unnamed1.png','assets/images/archive/unnamed2.png','assets/images/archive/unnamed3.png'];
+        images.forEach((imageSrc) => {
+            const image = new Image();
+            image.src = imageSrc;
+            image.classList.add('draggable');
+            imageContainer.appendChild(image);
+            makeDraggable(image);
+        });
+    </script>
+    <section class="footer">
+      <ul class="list">
+        <li>
+          website coded by juju and rai ^..^
+        </li>
+        
+      </ul>
+      <p class="copyright">decomposure &copy; 2023</p>
+    </section>
+
+</body>
+</html>

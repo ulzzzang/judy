@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>playground</title>
+    <style>
+        .draggable {
+            position: absolute;
+            cursor: move;
+            width: 10vw;
+            height: auto;
+        }
+
+        .draggable::selection {
+            background-color: transparent;
+        }
+        
+        body {
+  background-image: url(assets/images/2/snake%20better.png);
+  background-repeat: no-repeat;
+background-position: center;
+  background-attachment: fixed;
+  background-size: 30vw auto;
+}
+
+              .footer {
+  padding: 40px 0 0 0;
+  background-color: #ffffff;
+}
+.footer ul {
+  margin-top: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.footer ul a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.footer ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+.footer ul a:hover {
+  opacity: 1;
+}
+.footer .copyright {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 8px;
+  color: #aaa;
+    display: inline-block;
+  padding: 0 15px;
+}
+    </style>
+</head>
+<body>
+    <div id="image-container" style="position: relative; width: 100%; height: 100vh;"></div>
+
+    <script>
+        function getRandomPosition(container) {
+            const maxX = container.clientWidth - 100;
+            const maxY = container.clientHeight - 100;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            return { x, y };
+        }
+
+        function makeDraggable(element) {
+            let offsetX, offsetY, isDragging = false;
+
+            const container = document.getElementById('image-container');
+            const randomPosition = getRandomPosition(container);
+            element.style.left = randomPosition.x + 'px';
+            element.style.top = randomPosition.y + 'px';
+
+            element.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                const touch = e.touches[0];
+                offsetX = touch.clientX - element.getBoundingClientRect().left;
+                offsetY = touch.clientY - element.getBoundingClientRect().top;
+                e.preventDefault();
+            });
+
+            element.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+
+                const touch = e.touches[0];
+                const x = touch.clientX - offsetX;
+                const y = touch.clientY - offsetY;
+
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+                e.preventDefault();
+            });
+
+            element.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            element.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - element.getBoundingClientRect().left;
+                offsetY = e.clientY - element.getBoundingClientRect().top;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+
+                const x = e.clientX - offsetX;
+                const y = e.clientY - offsetY;
+
+                element.style.left = x + 'px';
+                element.style.top = y + 'px';
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        }
+
+        
+        const imageContainer = document.getElementById('image-container');
+
+        
+        const images = ['assets/images/archive/moshpit%20big.png', 'assets/images/archive/alterego.png', 'assets/images/archive/puppet%20show.png', 'assets/images/archive/skullclear.png', 'assets/images/archive/unnamed1.png','assets/images/archive/unnamed2.png','assets/images/archive/unnamed3.png'];
+        images.forEach((imageSrc) => {
+            const image = new Image();
+            image.src = imageSrc;
+            image.classList.add('draggable');
+            imageContainer.appendChild(image);
+            makeDraggable(image);
+        });
+    </script>
+    <section class="footer">
+      <ul class="list">
+        <li>
+          website coded by juju and rai ^..^
+        </li>
+        
+      </ul>
+      <p class="copyright">decomposure &copy; 2023</p>
+    </section>
+
+</body>
+</html>
